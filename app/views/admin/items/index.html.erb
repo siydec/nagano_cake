@@ -1,7 +1,8 @@
 <div class="container">
+  <h2 class="mt-5">商品一覧</h2>
   <div class="row">
     <div class="col mt-5">
-      <h2>商品一覧</h2>
+
       <table class="table">
         <thead>
           <tr>
@@ -16,7 +17,8 @@
           <% @items.each do |item| %>
           <tr>
             <th><%= item.id %></th>
-            <th><%= link_to controller: "items", action: "show", id: item do %>
+            <th>
+            <%= link_to controller: "items", action: "show", id: item do %>
             <%= item.name %>
             <% end %>
             </th>

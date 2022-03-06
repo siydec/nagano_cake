@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div>
+          <%= link_to "About", about_path, method: :get %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+　　　　　<%= link_to "ログイン", admin_session_path, method: :get %>
+　　　　　<%#= link_to "商品一覧", controller: "items", action: "index" %>
+　　　　　<%#= link_to "会員一覧", controller: "customers", action: "index" %>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

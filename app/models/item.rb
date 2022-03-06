@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
-  #belongs_to :genre
+  #belongs_to :genres
 
   def get_image
     unless image.attached?
@@ -14,5 +14,5 @@ class Item < ApplicationRecord
         (self.price * 1.08).round
   end
 
-  
+
 end

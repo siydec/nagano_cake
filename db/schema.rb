@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_06_030652) do
+ActiveRecord::Schema.define(version: 2022_03_07_142201) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_03_06_030652) do
     t.string "name"
     t.string "postal_code"
     t.string "addresses"
+    t.integer "customer_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -64,6 +65,8 @@ ActiveRecord::Schema.define(version: 2022_03_06_030652) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "amount"
+    t.integer "item_id"
+    t.integer "customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -99,6 +102,7 @@ ActiveRecord::Schema.define(version: 2022_03_06_030652) do
     t.text "introduction"
     t.integer "price"
     t.boolean "is_active"
+    t.integer "genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -107,6 +111,8 @@ ActiveRecord::Schema.define(version: 2022_03_06_030652) do
     t.integer "purchase_price"
     t.integer "amount"
     t.integer "making_status"
+    t.integer "item_id"
+    t.integer "order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -119,6 +125,7 @@ ActiveRecord::Schema.define(version: 2022_03_06_030652) do
     t.string "delivery_name"
     t.integer "payment"
     t.integer "status"
+    t.integer "customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

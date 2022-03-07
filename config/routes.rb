@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  devise_for :views
+
   namespace :public do
     get "registrations/sign_up" => "registrations#new"
   end
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
    resources :items
    resources :customers
    root to: "homes#top"
+   resources :orders, only: [:show]
   end
   root to: "homes#top"
   get "home/about" => "homes#about", as: "about"

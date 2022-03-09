@@ -4,6 +4,15 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :order_details
 
+   with_options presence: true do
+
+     validates :name
+     validates :introduction
+     validates :price
+
+
+   end
+
 
 
   def get_image
@@ -15,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   def add_tax_price
-        (self.price * 1.08).round
+        (self.price * 1.1).round
   end
 
 

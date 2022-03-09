@@ -1,14 +1,15 @@
 <div class="container">
   <h2 class="mt-5">商品編集</h2>
   <div class="row">
-    <div class="col-8 mt-5">
+    <div class="col-6 mt-5">
       <%= form_with model: [:admin, @item], local: true do |f| %>
-      <table class="table">
+      <table class="table ">
       <tr><td class="mr-5">商品画像</td><td><%= f.file_field :image, accept: "image/*" %></td></tr>
       <tr><td class="mr-5">商品名</td><td><%= f.text_field :name, placeholder: @item.name  %></td></tr>
       <tr><td class="mr-5">商品説明</td><td><%= f.text_area :introduction, placeholder: @item.introduction %></td></tr>
+      <tr><td>ジャンル</td><td><%= f.select :genre_id, @genre.map{ |genre| [genre.name, genre.id] } %></td></tr>
       <tr><td class="mr-5">税抜価格</td><td><%= f.number_field :price, placeholder: @item.price %>円</td></tr>
-      <tr><td><%= f.submit "変更を保存", class:"btn btn-success" %></td></tr>
+      <tr><td></td><td><%= f.submit "変更を保存", class:"btn btn-success" %></td></tr>
       </table>
       <% end %>
     </div>

@@ -1,6 +1,10 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page])
+    @items = Item.all
+    @genre = Genre.all
+
+
+
   end
 
   def new
@@ -10,8 +14,9 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to action: "index"
+     @item.save
+      redirect_to action: "index"
+
   end
 
   def show
@@ -23,6 +28,7 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @genre = Genre.all
   end
 
   def update
@@ -33,7 +39,7 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :price, :is_active)
+    params.require(:item).permit(:image, :name, :introduction, :price, :genre_id)
 
   end
 

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   namespace :public do
     get "registrations/sign_up" => "registrations#new"
+    root to: "homes#top"
+    get "about" => "homes#about"
+
   end
 
  namespace :admin do

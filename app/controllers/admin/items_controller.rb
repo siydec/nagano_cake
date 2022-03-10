@@ -14,8 +14,14 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-     @item.save
+    if @item.save
       redirect_to action: "index"
+    else
+     @item = Item.new
+     @genre = Genre.all
+     render action: "new"
+
+    end
 
   end
 
@@ -26,10 +32,7 @@ class Admin::ItemsController < ApplicationController
 
 
 
-  def edit
-    @item = Item.find(params[:id])
-    @genre = Genre.all
-  end
+
 
   def update
     @item = Item.find(params[:id])

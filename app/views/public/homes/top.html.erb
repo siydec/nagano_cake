@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 mt-5 p-5 ">
+      <p>ようこそ、ながのCAKEへ！</br>
+      このサイトは、ケーキ販売のECサイトになります。</br>
+      会員ではない方も商品の閲覧はできますが、</br>
+      購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <h2>新着商品</h2>
+  <div class="row mt-5">
+    <% @items.first(4).each do |item| %>
+    <div class="col-3">
+     <p><%= image_tag item.get_image, size: "160x160" %></p>
+     <p><%= item.name %></p>
+     <p>￥<%= item.price.to_s(:delimited) %></p>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
   namespace :public do
-    get "registrations/sign_up" => "registrations#new"
+
     root to: "homes#top"
     get "about" => "homes#about"
 
@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "home/about" => "homes#about", as: "about"
   devise_for :admins
-  devise_for :customers
+  devise_for :customers, controllers: {
+    registrations: 'customers/registrations',
+    sessions: 'customers/sessions'
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :genres
 end

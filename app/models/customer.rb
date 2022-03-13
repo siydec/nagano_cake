@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
 
     validates :last_name
     validates :first_name
-    validates :last_name_lana
+    validates :last_name_kana
     validates :first_name_kana
     validates :email
     validates :postal_code

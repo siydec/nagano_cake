@@ -1,4 +1,37 @@
-<h2>Log in</h2>
+<div class="container">
+  <h2 class="mt-5">ログgイン</h2>
+  <div class="row">
+
+    <div class="col-6">
+      <p>会員の方はこちらからログイン</p>
+      <%= form_with model: @customers, url: '/customers/sign_in', local: true do |f| %>
+      <div class="field">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+      <div class="field">
+        <%= f.label :パスワード %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "ログイン", class:"btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <p class="mt-3">会員登録がお済でない方</p>
+  <div class="row">
+
+      <p>
+      <%= link_to controller:"public/registrations", action:"new" do %>
+      <%= "こちら" %>
+      <% end %>から新規登録を行ってください
+      </p>
+    </div>
+</div>
+
+<div>
+  <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -23,4 +56,4 @@
   </div>
 <% end %>
 
-<%= render "customers/shared/links" %>
+</div>

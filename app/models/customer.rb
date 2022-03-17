@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
     validates :postal_code
     validates :address
     validates :telephone_number
-    validates is_active, inclusion: [true, false]
+
 
   end
 

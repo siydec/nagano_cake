@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h2>商品一覧</h2>
+  <div class="row mt-5">
+    <% @items.each do |item| %>
+    <div class="col-3">
+     <p>
+       <%= link_to controller: "public/items", action: "show", id: item.id do %>
+       <%= image_tag item.get_image, size: "160x160" %>
+       <% end %>
+     </p>
+     <p><%= item.name %></p>
+     <p>￥<%= item.price.to_s(:delimited) %></p>
+    </div>
+    <% end %>
+  </div>
+</div>

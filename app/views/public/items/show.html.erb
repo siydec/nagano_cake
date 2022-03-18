@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row mt-5">
+
+     <div class="col-4 mt-5">
+     <%= image_tag @item.get_image, size: "300x300" %>
+     </div>
+     <div class="col-6 mt-5 table-borderless">
+     <table class="table">
+       <tr><td><h3><%= @item.name %></td></tr></h3>
+       <tr><td><%= @item.introduction %></td></tr>
+       <tr>
+       <td><h4>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</h4></td>
+       </tr>
+       <%= form_with model: @cart_item, local: true do |f| %>
+
+       <%= f.select :amount, *[1..20] %>
+       <% end %>
+
+     </table>
+    </div>
+  </div>
+</div>

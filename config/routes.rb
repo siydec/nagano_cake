@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
 
-
-
   namespace :public do
     resources :addresses
+    resources :cart_items
   end
   namespace :public do
     get 'customers/show'

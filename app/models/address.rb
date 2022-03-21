@@ -7,4 +7,8 @@ class Address < ApplicationRecord
   validates :addresses, presence: true
 
 
+def address_display
+  '〒' + postal_code + '' + addresses + '' + name
+end
+
 end

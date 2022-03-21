@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
 
 
+
   namespace :public do
     resources :addresses
-    resources :cart_items
+    resources :orders do
+    collection do
+      post 'confirm'
+      get 'complete'
+     end
+    end
+    resources :cart_items do
+    collection do
+    delete 'destroy_all'
+     end
+    end
   end
   namespace :public do
     get 'customers/show'

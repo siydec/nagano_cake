@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col">
+    <div class="col-10">
+      <h4>ショッピングカート</h4>
+      <p class="text-right"><%= link_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete, class:"btn btn-danger" %></p>
       <table class="table mt-5">
         <thead>
           <tr>
@@ -11,18 +13,36 @@
           <th></th>
           </tr>
         </thead>
+
          <% @cart_items.each do |cart_item| %>
         <tbody>
           <tr>
-            <td><%= cart_item.item_id %></td>
-            <td></td>
-            <td><%= cart_item.amount %></td>
-            <td></td>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.add_tax_price.to_s(:delimited) %></td>
+            <td>
+              <%= form_with model: [:public,cart_item], loccal: true do |f| %>
+              <%= f.select :amount, *[1..12] %>
+              <%= f.submit "変更", class:"btn btn-success" %>
+              <% end %>
+            </td>
+            <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+
+            <% @total += cart_item.subtotal %>
+            <td><%= link_to "削除する", public_cart_item_path(cart_item), method: :delete, class:"btn btn-danger" %></td>
           </tr>
         </tbody>
         <% end %>
+        <tfoot>
+          <tr>
+            <td><p class="ml-3"><%= link_to "買い物を続ける", public_root_path, method: :get, class:"btn btn-primary" %></p></td>
+            <td></td>
+            <td></td>
+            <td>合計金額</td>
+            <td><%= @total.to_s(:delimited) %></td>
+          </tr>
+        </tfoot>
       </table>
-
+      <p class="text-center"><%= link_to "情報入力に進む", new_public_order_path, method: :get, class:"btn btn-success" %></p>
     </div>
   </div>
 </div>

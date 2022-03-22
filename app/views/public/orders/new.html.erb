@@ -12,12 +12,12 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= f.radio_button :payment, Order.payment_methods.key(0) %></td>
-          <td><%= f.label :payment, Order.payment_methods_i18n[:credit_card] %></td>
+          <td><%= f.radio_button :payment, Order.payments.key(0) %></td>
+          <td><%= f.label :payment, Order.payments_i18n[:credit_card] %></td>
         </tr>
         <tr>
-          <td><%= f.radio_button :payment, Order.payment_methods.key(1) %></td>
-          <td><%= f.label :payment, Order.payment_methods_i18n[:transfer] %></td>
+          <td><%= f.radio_button :payment, Order.payments.key(1) %></td>
+          <td><%= f.label :payment, Order.payments_i18n[:transfer] %></td>
         </tr>
       </tbody>
         <thead>

@@ -9,13 +9,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
-    @customer = Customer.find(current_customer.id)
-    @cart_items = current_customer.cart_items
-    if @order.select_address == "0"
-    elsif @order.payment == "1"
-    elsif @order.payment == "2"
-    end
+    @order = Order.new(order_params)
+   binding.pry
 
   end
 
@@ -31,5 +26,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+  end
+
+
+  private
+
+  def order_params
+    params.require(:order).permit(:payment)
   end
 end

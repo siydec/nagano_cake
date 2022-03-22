@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :order_details, foreign_key: 'customer_id'
 
 
-  enum payment_method: { credit_card: 0, transfer: 1}
+  enum payment: { credit_card: 0, transfer: 1}
 
    with_options presence: true do
      validates :customer_id
@@ -16,9 +16,9 @@ class Order < ApplicationRecord
      validates :status
 
    end
-   
-   
-   
+
+
+
 
 
 

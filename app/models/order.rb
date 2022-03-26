@@ -4,6 +4,7 @@ class Order < ApplicationRecord
 
 
   enum payment: { credit_card: 0, transfer: 1}
+  enum status: { wait: 0, confirmation: 1, production: 2, shipment: 3, complete: 4}
 
    with_options presence: true do
      validates :customer_id
@@ -17,6 +18,13 @@ class Order < ApplicationRecord
 
    end
 
+def address_display_order
+    '〒' + delivery_postal_code.to_s + '' + delivery_address + '' + delivery_name
+end
+
+def postage
+    800
+end
 
 
 

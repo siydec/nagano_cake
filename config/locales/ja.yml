@@ -4,3 +4,9 @@ ja:
        payment:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+       status:
+        wait: "入金待ち"
+        confirmation: "入金確認"
+        production: "製作中"
+        shipment: "発送準備中"
+        complete: "発送済み"

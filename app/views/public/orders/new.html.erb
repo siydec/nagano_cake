@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h3>注文情報入力</h3>
   <div class="row mt-5">
-    <%= form_with model: [:public,@order], url: confirm_public_orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: confirm_public_orders_path, method: :post, local: true do |f| %>
     <div class="col">
       <table class="table table-borderless">
       <thead>

@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h3>注文情報入力</h3>
   <div class="row mt-5">
-    <%= form_with url: confirm_public_orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: [:public,@order], url: confirm_public_orders_path, method: :post, local: true do |f| %>
     <div class="col">
       <table class="table table-borderless">
       <thead>
@@ -28,15 +28,15 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= f.radio_button :select_address, "0" %></td><td>ご自身の住所</td>
+            <td><%= f.radio_button :select_address, [0] %></td><td>ご自身の住所</td>
             <td><%= @customer.address_display_customer %></td>
           </tr>
           <tr>
-            <td><%= f.radio_button :select_address, "1" %></td><td>登録済住所から選択</td>
+            <td><%= f.radio_button :select_address, [1] %></td><td>登録済住所から選択</td>
             <td><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></td>
           </tr>
           <tr>
-            <td><%= f.radio_button :select_address, "2" %></td><td>新しいお届け先</td>
+            <td><%= f.radio_button :select_address, [2] %></td><td>新しいお届け先</td>
           </tr>
           <tr>
           <td></td><td>郵便番号(ハイフンなし)</td><td><%= f.text_field :delivery_postal_code %></td>

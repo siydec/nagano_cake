@@ -26,21 +26,32 @@ class Public::OrdersController < ApplicationController
       @order.delivery_postal_code = @address.postal_code
       @order.delivery_name = @address.name
     else params[:order][:select_address] == "3"
-
-
     end
+
 
   end
 
   def complete
+
   end
 
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    redirect_to "complete"
+    @order.status
+
+    #@order.save
+    @order_details = OrderDetail.new
+    @order_details.order_id = @order.id
+    @cart_items = current_customer.cart_items
+    @cart_item = 
+
+
+
+
+    binding.pry
+    redirect_to "/complete"
   end
 
   def index
@@ -54,5 +65,9 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:payment, :delivery_address, :delivery_postal_code, :delivery_name, :postage, :billing_amount)
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(:purchase_price, :amount, :item_id, :order_id,)
   end
 end

@@ -8,12 +8,12 @@ class CartItem < ApplicationRecord
 
 
 
-  def add_tax_price
+  def add_tax_price_cart
         (item.price * 1.1).round
   end
 
   def subtotal
-    add_tax_price * amount
+    add_tax_price_cart * amount
   end
 
 

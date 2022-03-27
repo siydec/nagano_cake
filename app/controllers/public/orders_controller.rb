@@ -39,22 +39,32 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.status
-
-    #@order.save
-    @order_details = OrderDetail.new
-    @order_details.order_id = @order.id
-    @cart_items = current_customer.cart_items
-    @cart_item = 
 
 
+    @order.save
 
+    @cart_items = current_customer.cart_items.all
+     @cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.amount = cart_item.amount
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.purchase_price = cart_item.add_tax_price_cart
+        @order_detail.making_status = 0
+        @order_detail.save
 
-    binding.pry
-    redirect_to "/complete"
+      end
+    current_customer.cart_items.destroy_all
+
+    redirect_to action: "complete"
   end
 
   def index
+    @orders = current_customer.orders.all
+    
+    #binding.pry
+
+
   end
 
   def show

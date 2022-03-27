@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :customer, foreign_key: 'customer_id'
-  has_many :order_details, foreign_key: 'customer_id'
+  has_many :order_details
 
 
   enum payment: { credit_card: 0, transfer: 1}
@@ -24,6 +24,10 @@ end
 
 def postage
     800
+end
+
+def price_total
+  self.purchase_price * self.amount
 end
 
 

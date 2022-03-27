@@ -18,7 +18,7 @@
         <tbody>
           <tr>
             <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.add_tax_price.to_s(:delimited) %></td>
+            <td><%= cart_item.add_tax_price_cart.to_s(:delimited) %></td>
             <td>
               <%= form_with model: [:public,cart_item], loccal: true do |f| %>
               <%= f.select :amount, *[1..12] %>

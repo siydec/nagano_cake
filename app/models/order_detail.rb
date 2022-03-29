@@ -6,7 +6,7 @@ class OrderDetail < ApplicationRecord
 
 
 def price_total
-  order_detail.purchase_price * order_detail.amount
+  self.purchase_price * self.amount
 end
 
 

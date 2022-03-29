@@ -19,8 +19,9 @@ class Order < ApplicationRecord
    end
 
 def address_display_order
-    '〒' + delivery_postal_code.to_s + '' + delivery_address + '' + delivery_name
+    '〒' + delivery_postal_code.to_s + ' ' + delivery_address + ' ' + delivery_name
 end
+
 
 def postage
     800
@@ -30,6 +31,9 @@ def price_total
   self.purchase_price * self.amount
 end
 
+def order_total
+   self.billing_amount + postage
+end
 
 
 

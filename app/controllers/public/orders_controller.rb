@@ -61,13 +61,16 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    
-    #binding.pry
+
+
 
 
   end
 
   def show
+    @order = Order.find(params[:id])
+   
+    #binding.pry
   end
 
 

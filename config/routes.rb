@@ -15,16 +15,18 @@ Rails.application.routes.draw do
     delete 'destroy_all'
      end
     end
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-  end
-  namespace :public do
+
+
+
+
     root to: "homes#top"
     get "about" => "homes#about"
-    resources :customers
+    resource :customers do
+      collection do
+       get 'unsubscribe'
+       patch 'withdraw'
+     end
+   end
     resources :items, only: [:show, :index]
 
 
@@ -36,10 +38,14 @@ Rails.application.routes.draw do
    root to: "homes#top"
    resources :orders, only: [:show, :index]
   end
-  root to: "homes#top"
+  root to: "public/homes#top"
   get "home/about" => "homes#about", as: "about"
-  devise_for :admins
-  devise_for :customers, controllers: {
+  get "homes/top"
+  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+  devise_for :customers, skip: [:passwords] ,controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
 

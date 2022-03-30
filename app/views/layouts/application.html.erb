@@ -7,19 +7,30 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
       <div class="container">
+        <% if customer_signed_in? %>
         <div>
-          <%= link_to "About", public_about_path, method: :get %>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-　　　　　<%= link_to "ログイン", admin_session_path, method: :get %>
+          <%= link_to "マイページ", public_about_path, method: :get %>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+
 　　　　　<%#= link_to "商品一覧", controller: "items", action: "index" %>
 　　　　　<%#= link_to "会員一覧", controller: "customers", action: "index" %>
         </div>
+        <% elsif admin_signed_in? %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        <div>
+        </div>
+        <% else %>
+        <%= link_to "About", public_about_path, method: :get %>
+        <%= link_to "ログイン", customer_session_path, method: :get %>
+        <% end %>
+
       </div>
     </header>
     <%= yield %>

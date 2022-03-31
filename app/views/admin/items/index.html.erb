@@ -1,9 +1,13 @@
 <div class="container">
   <h2 class="mt-5">商品一覧</h2>
+  <p class="text-right">
+   <%= link_to new_admin_item_path do  %>
+  <button type="button" class="btn btn-primary rounded-circle p-0" style="width:3rem;height:3rem;">＋</button>
+   <% end %>
+  </p>
   <div class="row">
     <div class="col mt-5">
-
-      <table class="table">
+      <table class="table mt-5">
         <thead>
           <tr>
             <th>商品ID</th>

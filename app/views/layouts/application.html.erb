@@ -3,12 +3,15 @@
   <head>
     <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9c2b7fd351.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
@@ -24,6 +27,8 @@
         <% elsif admin_signed_in? %>
         <%= link_to "商品一覧", admin_items_path %>
         <%= link_to "会員一覧", admin_customers_path %>
+        <%= link_to "注文履歴一覧", admin_root_path %>
+        <%= link_to "ジャンル一覧", genres_path %>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         <div>
         </div>

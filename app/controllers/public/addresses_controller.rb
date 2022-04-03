@@ -1,8 +1,12 @@
 class Public::AddressesController < ApplicationController
 
+  before_action :authenticate_customer!, except: [:top, :about]
+
   def index
    @address = Address.new
-   @addresses = Address.all
+   @addresses = Address.where(customer_id: current_customer.id)
+   binding.pry
+
   end
 
   def create

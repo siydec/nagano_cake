@@ -4,16 +4,23 @@
      <div class="col-4 mt-5">
      <%= image_tag @item.get_image, size: "300x300" %>
      </div>
-     <div class="col-6 mt-5 table-borderless">
+     <div class="col mt-5 table-borderless">
      <table class="table">
        <tr><td><h3><%= @item.name %></td></tr></h3>
        <tr><td><%= @item.introduction %></td></tr>
        <tr>
        <td><h4>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</h4></td>
        </tr>
-       <%= form_with model: [:public, @cart_item], local: true do |f| %>
-       <%= f.hidden_field :item_id, :value => @item.id %>
-       <tr><td><%= f.select :amount, *[1..16], prompt:"個数選択" %></td><td><%= f.submit "カートに入れる", class:"btn btn-success" %></td></tr>
+       <% if customer_signed_in? %>
+        <%= form_with model: [:public, @cart_item], local: true do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <tr>
+          <td><%= f.select :amount, *[1..16], prompt:"個数選択" %></td>
+          <td><%= f.submit "カートに入れる", class:"btn btn-success" %></td>
+        </tr>
+        <% end %>
+       <% else %>
+      <tr></tr>
        <% end %>
     </table>
     </div>

@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
 
+before_action :authenticate_customer!, except: [:top, :about]
 
   def new
     @order = Order.new
@@ -69,7 +70,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-   
+
     #binding.pry
   end
 
@@ -77,7 +78,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment, :delivery_address, :delivery_postal_code, :delivery_name, :postage, :billing_amount)
+    params.require(:order).permit(:payment, :delivery_address, :delivery_postal_code, :delivery_name, :postage, :billing_amount,)
   end
 
   def order_detail_params

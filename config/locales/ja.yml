@@ -10,7 +10,6 @@ ja:
     production: "製作中"
     shipment: "発送準備中"
     complete: "発送済み"
-
   order_detail:
    making_status:
     no_making: "製作不可"

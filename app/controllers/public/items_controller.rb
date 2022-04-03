@@ -1,4 +1,7 @@
 class Public::ItemsController < ApplicationController
+
+  before_action :authenticate_customer!, except: [:top, :about, :index, :show]
+
   def index
     @items = Item.all
   end
@@ -10,5 +13,5 @@ class Public::ItemsController < ApplicationController
 
 
 
-  
+
 end

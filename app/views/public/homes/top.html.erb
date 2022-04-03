@@ -14,7 +14,11 @@
   <div class="row mt-5">
     <% @items.first(4).each do |item| %>
     <div class="col-3">
-     <p><%= image_tag item.get_image, size: "160x160" %></p>
+     <p>
+       <%= link_to controller: "public/items", action: "show", id: item.id do %>
+       <%= image_tag item.get_image, size: "160x160" %>
+       <% end %>
+     </p>
      <p><%= item.name %></p>
      <p>￥<%= item.price.to_s(:delimited) %></p>
     </div>

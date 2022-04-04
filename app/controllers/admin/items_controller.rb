@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
-  
-  
-  
+
+
+
   def index
     @items = Item.all
     @genre = Genre.all
@@ -18,7 +18,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to action: "index"
+      redirect_to action: "show", id: @item
     else
      @item = Item.new
      @genre = Genre.all

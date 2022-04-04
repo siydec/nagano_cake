@@ -42,7 +42,12 @@
           </tr>
         </tfoot>
       </table>
-      <p class="text-center"><%= link_to "情報入力に進む", new_public_order_path, method: :get, class:"btn btn-success" %></p>
+      <p class="text-center">
+        <% if @cart_items.present? %>
+        <%= link_to "情報入力に進む", new_public_order_path, method: :get, class:"btn btn-success" %>
+        <% else %>
+        <% end %>
+      </p>
     </div>
   </div>
 </div>

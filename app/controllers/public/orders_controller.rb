@@ -6,6 +6,7 @@ before_action :authenticate_customer!, except: [:top, :about]
     @order = Order.new
     @order.customer_id = current_customer.id
     @customer = Customer.find(current_customer.id)
+    @addreses = Address.where(customer_id: current_customer.id)
 
   end
 

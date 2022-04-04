@@ -3,9 +3,9 @@
 
     <div class="col-12">
       <h3>注文履歴一覧</h3>
-      <table class="table mt-5">
+      <table class="table mt-5 border">
         <thead>
-          <tr>
+          <tr class="bg-light">
             <th>注文日</th>
             <th>配送先</th>
             <th>注文商品</th>
@@ -17,16 +17,16 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-            <td><%= order.address_display_order %></td>
+            <td class="border"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+            <td class="border"><%= order.address_display_order %></td>
 
-            <td>
+            <td class="border">
               <% order.order_details.each do |detail| %>
               <%= detail.item.name %></br>
               <% end %>
             </td>
 
-            <td>
+            <td class="border">
               <% @total=800 %>
               <% order.order_details.each do |detail| %>
               <% @total += detail.purchase_price * detail.amount %>
@@ -34,7 +34,7 @@
               <%= @total.to_s(:delimited) %>
               </td>
               <td><%= order.status_i18n %></td>
-              <td><%= link_to "注文詳細", controller: "orders", action:"show", id: order.id %></td>
+              <td class="border"><%= link_to "注文詳細", controller: "orders", action:"show", id: order.id %></td>
           </tr>
           <% end %>
 

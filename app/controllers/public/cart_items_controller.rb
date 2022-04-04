@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
-  
+
   before_action :authenticate_customer!, except: [:top, :about]
-  
+
   def index
 
   @customer = Customer.find(current_customer.id)
@@ -12,10 +12,19 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
-    @cart_item.save
-    redirect_to action: "index"
+   @cart_item = CartItem.new(cart_item_params)
+   @cart_item.customer_id = current_customer.id
+   if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+     cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      cart_item.amount += @cart_item.amount.to_i
+      cart_item.save
+      redirect_to action: "index"
+   else
+     @cart_item.save
+     redirect_to action: "index"
+   end
+
+
   end
 
   def update
@@ -32,7 +41,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to public_items_path
+    redirect_to action: "index"
   end
 
   private

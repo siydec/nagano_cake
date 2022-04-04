@@ -3,17 +3,20 @@
   <h3 class="ml-5 mt-5">マイページ</h3>
   <div class="row">
     <div class="col-6">
-     <h2 class="mt-5">登録情報</h2>
-     <p>
-     <%= link_to "編集する", edit_public_customers_path, method: :get, class:"btn btn-success" %>
-     </p>
-     <table class="table mt-2">
-       <tr><th>氏名</th><td><%= @customer.full_name %></td></tr>
-       <tr><th>カナ</th><td><%= @customer.full_name_kana %></td></tr>
-       <tr><th>郵便番号</th><td><%= @customer.postal_code %></td></tr>
-       <tr><th>住所</th><td><%= @customer.address %></td></tr>
-       <tr><th>電話番号</th><td><%= @customer.telephone_number %></td></tr>
-       <tr><th>メールアドレス</th><td><%= @customer.email %></td></tr>
+      <table class="table table-borderless">
+        <tr>
+          <td><h3>登録情報</h3></td>
+          <td><%= link_to "編集する", edit_public_customers_path, method: :get, class:"btn btn-success" %></td>
+        </tr>
+      </table>
+
+     <table class="table mt-2 border">
+       <tr><th class="bg-light border">氏名</th><td><%= @customer.full_name %></td></tr>
+       <tr><th class="bg-light border">カナ</th><td><%= @customer.full_name_kana %></td></tr>
+       <tr><th class="bg-light border">郵便番号</th><td><%= @customer.postal_code %></td></tr>
+       <tr><th class="bg-light border">住所</th><td><%= @customer.address %></td></tr>
+       <tr><th class="bg-light border">電話番号</th><td><%= @customer.telephone_number %></td></tr>
+       <tr><th class="bg-light border">メールアドレス</th><td><%= @customer.email %></td></tr>
      </table>
     </div>
   </div>

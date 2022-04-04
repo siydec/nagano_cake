@@ -33,7 +33,9 @@
           </tr>
           <tr>
             <td><%= f.radio_button :select_address, [1] %></td><td>登録済住所から選択</td>
-            <td><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></td>
+            <td>
+              <%= f.select :address_id, @addreses.map{ |addres| [addres.address_display, addres.id]} %>
+            </td>
           </tr>
           <tr>
             <td><%= f.radio_button :select_address, [2] %></td><td>新しいお届け先</td>

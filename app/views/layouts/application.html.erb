@@ -27,7 +27,7 @@
          <%= link_to "商品一覧", public_items_path, class:"btn btn-light" %>
          <%= link_to "カート", public_cart_items_path, class:"btn btn-light"%>
          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-light" %>
-         <p>ようこそ<span class="mr-1 ml-1"><%= current_customer.full_name %></span>さん</p>
+         <p class="mt-2">ようこそ<span class="mr-1 ml-1"><%= current_customer.full_name %></span>さん</p>
        </div>
 
         <% elsif admin_signed_in? %>

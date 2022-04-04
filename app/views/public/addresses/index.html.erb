@@ -15,19 +15,19 @@
   <div class="row mt-5">
     <div class="col-8">
       <table class="table">
-        <thead>
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
-          <th></th>
+        <thead class="bg-light">
+          <th class="border">郵便番号</th>
+          <th class="border">住所</th>
+          <th class="border">宛名</th>
+          <th class="border"></th>
         </thead>
         <tbody>
           <% @addresses.each do |address| %>
           <tr>
-            <td><%= address.postal_code %></td>
-            <td><%= address.addresses %></td>
-            <td><%= address.name %></td>
-            <td>
+            <td class="border"><%= address.postal_code %></td>
+            <td class="border"><%= address.addresses %></td>
+            <td class="border"><%= address.name %></td>
+            <td class="border">
               <%= link_to "編集する", edit_public_address_path(address), method: :get, class:"btn btn-success" %>
               <%= link_to "削除する", public_address_path(address), method: :delete, class:"btn btn-danger" %>
             </td>

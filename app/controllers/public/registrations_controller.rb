@@ -11,7 +11,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def create
    @customer = Customer.new(customer_params)
    @customer.save
-   redirect_to '/public/about'
+   redirect_to my_page_public_customers_path
   end
 
 private
@@ -68,9 +68,10 @@ end
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+     my_page_public_customers_path(resource)
+
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

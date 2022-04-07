@@ -4,14 +4,34 @@ before_action :authenticate_admin!
 
 def show
   @order = Order.find(params[:id])
+  @order_details = @order.order_details
+  @order_details.select("complete")
+
+    binding.pry
+
+
+  #else
+
+
+  #end
+
+
 
 
 end
 
 def update
-  @order = Order.find(params[:id])
-  @order.update(order_params)
-  redirect_to action: "show"
+   @order = Order.find(params[:id])
+   @order.update(order_params)
+
+    if @order.status == "confirmation"
+     @order_details = @order.order_details
+     @order_details.each do |detail|
+       detail.making_status = 1
+       detail.update(order_detail_params)
+      end
+    end
+    redirect_to action: "show"
 
 end
 
@@ -22,7 +42,7 @@ private
   end
 
   def order_detail_params
-    params.require(:order_detail).permit(:purchase_price, :amount, :item_id, :order_id,)
+    params.permit(:purchase_price, :amount, :item_id, :order_id,)
   end
 
 

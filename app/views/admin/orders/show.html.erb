@@ -13,7 +13,7 @@
         <th>注文ステータス</th>
         <td>
           <%= form_with url: admin_order_path, method: :patch, local: true do |f| %>
-          <%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"),k]} %>
+          <%= f.select :status, Order.statuses.keys.map { |k|  [I18n.t("enums.order.status.#{k}"),k]}, { selected: @order.status} %>
           <%= f.submit "更新", class:"btn btn-success" %>
         </td>
         <td>
@@ -38,20 +38,21 @@
         </tr>
       </thead>
       <tbody>
-        <% @order.order_details.each do |detail| %>
+        <% @order.order_details.each do |d| %>
         <tr>
-         <td><%= detail.item.name %></td>
-         <td><%= detail.purchase_price.to_s(:delimited) %></td>
-         <td><%= detail.amount %></td>
-         <td><%= detail.price_total.to_s(:delimited) %></td>
+         <td><%= d.item.name %></td>
+         <td><%= d.purchase_price.to_s(:delimited) %></td>
+         <td><%= d.amount %></td>
+         <td><%= d.price_total.to_s(:delimited) %></td>
          <td>
-           <%= form_with url: admin_order_detail_path, method: :patch, local: true do |f| %>
-           <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"),k]} %>
-         <td>
+           <%= form_with url: admin_order_detail_path(d), method: :patch, local: true do |f| %>
+           <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"),k]}, { selected: d.making_status} %>
+
            <%= f.submit "更新", class:"btn btn-success" %>
-         </td>
-        </tr>
            <% end %>
+         <td></td>
+        </tr>
+
         <% end %>
       </tbody>
     </table>

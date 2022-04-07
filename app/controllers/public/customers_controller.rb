@@ -18,11 +18,14 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
     @customer = current_customer
+
   end
 
   def withdraw
     @customer = current_customer
     @customer.update(customer_params)
+    sign_out
+    redirect_to public_root_path
   end
 
   private

@@ -12,7 +12,6 @@ def show
    if @order_details.all? { |d| d == "complete"}
      @order.status = "shipment"
      @order.update(order_params)
-     #binding.pry
    end
   end
 end

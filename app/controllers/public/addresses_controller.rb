@@ -16,7 +16,7 @@ class Public::AddressesController < ApplicationController
       redirect_to action: "index"
    else
    @address = Address.new
-   @addresses = Address.all
+   @addresses = Address.where(customer_id: current_customer.id)
    render action: "index"
    end
   end

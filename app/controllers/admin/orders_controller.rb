@@ -4,20 +4,17 @@ before_action :authenticate_admin!
 
 def show
   @order = Order.find(params[:id])
-  @order_details = @order.order_details
-  @order_details.select("complete")
+  @order_details = @order.order_details.pluck(:making_status)
+  if @order.status == "shipment"
+  elsif @order.status == "complete"
+  else
 
-    binding.pry
-
-
-  #else
-
-
-  #end
-
-
-
-
+   if @order_details.all? { |d| d == "complete"}
+     @order.status = "shipment"
+     @order.update(order_params)
+     #binding.pry
+   end
+  end
 end
 
 def update

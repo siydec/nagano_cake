@@ -5,27 +5,33 @@
      <%= image_tag @item.get_image, size: "300x300" %>
      </div>
      <div class="col mt-5 table-borderless">
+     <% if customer_signed_in? %>
+     <%= form_with model: @cart_item, local: true do |f| %>
      <table class="table">
        <tr><td><h3><%= @item.name %></td></tr></h3>
        <tr><td><%= @item.introduction %></td></tr>
        <tr>
        <td><h4>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</h4></td>
        </tr>
-       <% if customer_signed_in? %>
-
-        <tr><%= form_with model: [:public, @cart_item], local: true do |f| %>
+       <tr>
           <td>
             <%= f.select :amount, *[1..16], prompt:"個数選択" %>
             <%= f.hidden_field :item_id, :value => @item.id %>
           </td>
           <td><%= f.submit "カートに入れる", class:"btn btn-success" %></td>
-          <% end %>
-        </tr>
-
+       </tr>
+       </table>
+      <% end %>
        <% else %>
-      <tr></tr>
+       <table class="table">
+        <tr><td><h3><%= @item.name %></td></tr></h3>
+        <tr><td><%= @item.introduction %></td></tr>
+        <tr>
+        <td><h4>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</h4></td>
+        </tr>
+         <tr></tr>
+       </table>
        <% end %>
-    </table>
     </div>
   </div>
 </div>

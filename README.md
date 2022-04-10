@@ -1,24 +1,24 @@
-# README
+<h1>ECサイト　ながの_CAKE</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h3>機能</h3>
+　管理者側  
+ 
+     :ログイン、ログアウト  
+     :商品の登録  
+     :ジャンルの登録  
+     :商品情報の編集  
+     :注文の確認  
+     :会員情報の編集  
+ 会員側  
+ 
+     :ログイン、ログアウト
+     :商品一覧、詳細の表示
+     :カート機能(追加、一覧、編集)
+     :注文機能(カートの中身を購入、支払方法、配送先の設定)
+     :会員情報の編集、退会
+     :配送先の追加、編集
+     :注文履歴、詳細の表示  
+ 
+      
+ 　
+　

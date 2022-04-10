@@ -13,9 +13,7 @@
        </tr>
        <% if customer_signed_in? %>
 
-        <tr>
-          <%= form_with model: [:public, @cart_item], local: true do |f| %>
-
+        <tr><%= form_with model: [:public, @cart_item], local: true do |f| %>
           <td>
             <%= f.select :amount, *[1..16], prompt:"個数選択" %>
             <%= f.hidden_field :item_id, :value => @item.id %>
@@ -23,6 +21,7 @@
           <td><%= f.submit "カートに入れる", class:"btn btn-success" %></td>
           <% end %>
         </tr>
+
        <% else %>
       <tr></tr>
        <% end %>

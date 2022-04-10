@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(customer_params)
     sign_out
-    redirect_to public_root_path
+    redirect_to root_path
   end
 
   private

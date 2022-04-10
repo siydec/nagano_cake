@@ -3,7 +3,7 @@
   <h1 class="mt-5">新規会員登録</h1>
   <div class="row">
     <div class="col-8 mt-5">
-      <%= form_with model: @customer, url: '/public/customers', local: true do |f| %>
+      <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
       <table class="table">
         <tr>
           <td>名前</td>

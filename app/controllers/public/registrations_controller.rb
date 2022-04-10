@@ -11,8 +11,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def create
    @customer = Customer.new(customer_params)
    @customer.save
-   redirect_to my_page_public_customers_path
+   sign_in @customer
+   redirect_to my_page_customers_path
   end
+
+   def update
+     @customer = current_customer
+     @customer.update(customer_params)
+     redirect_to my_page_customers_path
+   end
 
 private
 

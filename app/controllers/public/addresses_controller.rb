@@ -13,11 +13,11 @@ class Public::AddressesController < ApplicationController
    @address = Address.new(address_params)
    @address.customer_id = current_customer.id
    if @address.save
-      redirect_to action: "index"
+      redirect_to addresses_path
    else
    @address = Address.new
    @addresses = Address.where(customer_id: current_customer.id)
-   render action: "index"
+   render  addresses_path
    end
   end
 
@@ -28,13 +28,13 @@ class Public::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     @address.update(address_params)
-    redirect_to action: "index"
+    redirect_to addresses_path
   end
 
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
-    redirect_to action: "index"
+    redirect_to addresses_path
   end
 
   private

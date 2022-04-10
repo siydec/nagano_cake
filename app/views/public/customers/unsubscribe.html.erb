@@ -12,10 +12,10 @@
   <div class="row  justify-content-center mt-5">
 
      <div class="position-relativ mx-5">
-      <%= link_to "退会しない", public_customers_path, method: :get, class:"btn btn-primary" %>
+      <%= link_to "退会しない", my_page_customers_path, method: :get, class:"btn btn-primary" %>
     </div>
     <div class="position-relativ mx-5">
-      <%= form_with model: @customer, url: withdraw_public_customers_path, method: :patch, local: true do |f| %>
+      <%= form_with model: @customer, url: withdraw_customers_path, method: :patch, local: true do |f| %>
         <%= f.hidden_field :is_active, :value => false %>
         <%= f.submit "退会する", class:"btn btn-danger" %>
         <% end %>
